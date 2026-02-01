@@ -1,0 +1,11 @@
+# Secrets - never commit these
+.env
+*.secret
+credentials.json
+
+# OS files
+.DS_Store
+
+# Temp files
+*.tmp
+*.log
