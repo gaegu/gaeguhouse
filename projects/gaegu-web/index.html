@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪜 사다리 타기</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .setup-box {
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        input[type="number"] {
+            width: 120px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        .btn {
+            padding: 16px 48px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        .btn-start {
+            background: linear-gradient(135deg, #FF6B6B, #ee5a5a);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+        }
+        .btn-start:hover { transform: scale(1.05); }
+        .btn-reset {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            margin-left: 10px;
+        }
+        
+        /* 사다리 게임 영역 */
+        .ladder-game {
+            display: none;
+        }
+        .ladder-game.show { display: block; }
+        
+        /* 사다리 캔버스 */
+        .ladder-container {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        #ladderCanvas {
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        
+        /* 참가자 버튼들 */
+        .players-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .player-btn {
+            padding: 12px 24px;
+            border: 3px solid white;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .player-btn:hover:not(:disabled) {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .player-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .player-btn.winner {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            animation: pulse 0.5s infinite;
+        }
+        .player-btn.loser {
+            background: #666;
+            border-color: #999;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* 결과 */
+        .result-display {
+            font-size: 3rem;
+            margin: 30px 0;
+            display: none;
+        }
+        .result-display.show { display: block; }
+        .result-display.winner {
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255,215,0,0.5);
+            animation: bounce 0.5s ease;
+        }
+        .result-display.loser {
+            color: #ccc;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* 진행 상태 */
+        .status {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🪜 사다리 타기</h1>
+        
+        <!-- 설정 화면 -->
+        <div class="setup-box" id="setupBox">
+            <label>참가 인원수</label>
+            <input type="number" id="playerCount" min="2" max="10" value="4">
+            <br>
+            <button class="btn btn-start" onclick="startGame()">시작하기</button>
+        </div>
+        
+        <!-- 게임 화면 -->
+        <div class="ladder-game" id="ladderGame">
+            <div class="players-row" id="playersRow"></div>
+            
+            <div class="ladder-container">
+                <canvas id="ladderCanvas" width="500" height="300"></canvas>
+            </div>
+            
+            <div class="result-display" id="resultDisplay"></div>
+            
+            <p class="status" id="status">참가자를 선택하세요!</p>
+            
+            <button class="btn btn-reset" onclick="resetGame()">다시하기</button>
+        </div>
+    </div>
+
+    <script>
+        let playerCount = 0;
+        let winnerIndex = -1;
+        let revealed = [];
+        let isAnimating = false;
+        let ladderData = [];
+        
+        function startGame() {
+            playerCount = parseInt(document.getElementById('playerCount').value);
+            if (playerCount < 2) playerCount = 2;
+            if (playerCount > 10) playerCount = 10;
+            
+            // 당첨자 랜덤 선택
+            winnerIndex = Math.floor(Math.random() * playerCount);
+            revealed = [];
+            isAnimating = false;
+            
+            // 사다리 데이터 생성
+            generateLadder();
+            
+            // UI 전환
+            document.getElementById('setupBox').style.display = 'none';
+            document.getElementById('ladderGame').classList.add('show');
+            document.getElementById('resultDisplay').classList.remove('show');
+            document.getElementById('status').textContent = '참가자를 선택하세요!';
+            
+            // 참가자 버튼 생성
+            renderPlayers();
+            
+            // 사다리 그리기
+            drawLadder();
+        }
+        
+        function generateLadder() {
+            ladderData = [];
+            const rows = 8;
+            for (let i = 0; i < rows; i++) {
+                let row = [];
+                for (let j = 0; j < playerCount - 1; j++) {
+                    row.push(Math.random() > 0.5);
+                }
+                ladderData.push(row);
+            }
+        }
+        
+        function renderPlayers() {
+            const container = document.getElementById('playersRow');
+            container.innerHTML = '';
+            for (let i = 0; i < playerCount; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'player-btn';
+                btn.textContent = (i + 1) + '번';
+                btn.onclick = () => selectPlayer(i);
+                btn.id = 'player-' + i;
+                container.appendChild(btn);
+            }
+        }
+        
+        function drawLadder(highlightPath = null, highlightProgress = 0) {
+            const canvas = document.getElementById('ladderCanvas');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            const padding = 50;
+            const colWidth = (width - padding * 2) / (playerCount - 1);
+            const rowHeight = (height - 40) / (ladderData.length + 1);
+            
+            // 세로선 그리기
+            ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+            ctx.lineWidth = 3;
+            for (let i = 0; i < playerCount; i++) {
+                const x = padding + i * colWidth;
+                ctx.beginPath();
+                ctx.moveTo(x, 20);
+                ctx.lineTo(x, height - 20);
+                ctx.stroke();
+            }
+            
+            // 가로선 (다리) 그리기
+            ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+            ctx.lineWidth = 3;
+            for (let row = 0; row < ladderData.length; row++) {
+                const y = 20 + (row + 1) * rowHeight;
+                for (let col = 0; col < ladderData[row].length; col++) {
+                    if (ladderData[row][col]) {
+                        const x1 = padding + col * colWidth;
+                        const x2 = padding + (col + 1) * colWidth;
+                        ctx.beginPath();
+                        ctx.moveTo(x1, y);
+                        ctx.lineTo(x2, y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            // 하이라이트 경로 그리기
+            if (highlightPath && highlightProgress > 0) {
+                ctx.strokeStyle = '#FFD700';
+                ctx.lineWidth = 5;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                
+                const totalSteps = highlightPath.length;
+                const stepsToShow = Math.floor(highlightProgress * totalSteps);
+                
+                ctx.beginPath();
+                for (let i = 0; i <= stepsToShow && i < highlightPath.length; i++) {
+                    const point = highlightPath[i];
+                    const x = padding + point.col * colWidth;
+                    const y = 20 + point.row * rowHeight;
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+                
+                // 현재 위치에 동그라미
+                if (stepsToShow < highlightPath.length) {
+                    const current = highlightPath[stepsToShow];
+                    const cx = padding + current.col * colWidth;
+                    const cy = 20 + current.row * rowHeight;
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FFD700';
+                    ctx.fill();
+                }
+            }
+        }
+        
+        function calculatePath(startIndex) {
+            let col = startIndex;
+            let path = [{row: 0, col: col}];
+            
+            for (let row = 0; row < ladderData.length; row++) {
+                // 왼쪽 다리 확인
+                if (col > 0 && ladderData[row][col - 1]) {
+                    path.push({row: row + 1, col: col});
+                    col--;
+                    path.push({row: row + 1, col: col});
+                }
+                // 오른쪽 다리 확인
+                else if (col < playerCount - 1 && ladderData[row][col]) {
+                    path.push({row: row + 1, col: col});
+                    col++;
+                    path.push({row: row + 1, col: col});
+                }
+                // 그냥 아래로
+                else {
+                    path.push({row: row + 1, col: col});
+                }
+            }
+            
+            return { path, endCol: col };
+        }
+        
+        function selectPlayer(index) {
+            if (isAnimating || revealed.includes(index)) return;
+            
+            isAnimating = true;
+            const btn = document.getElementById('player-' + index);
+            btn.disabled = true;
+            
+            // 실제 경로 계산 (속이기 위해 winnerIndex에 도착하도록 조작)
+            // 사다리를 역으로 계산해서 결과 결정
+            const isWinner = (index === winnerIndex) && !revealed.some(r => r.isWinner);
+            
+            const { path } = calculatePath(index);
+            
+            // 애니메이션
+            let progress = 0;
+            const animate = () => {
+                progress += 0.02;
+                drawLadder(path, progress);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    // 애니메이션 완료
+                    revealed.push({ index, isWinner });
+                    
+                    // 결과 표시
+                    const resultDisplay = document.getElementById('resultDisplay');
+                    if (isWinner) {
+                        resultDisplay.textContent = '🎉 ' + (index + 1) + '번 당첨!! 🎉';
+                        resultDisplay.className = 'result-display show winner';
+                        btn.classList.add('winner');
+                        document.getElementById('status').textContent = '당첨자가 나왔습니다!';
+                        
+                        // 나머지 모두 꽝 처리
+                        for (let i = 0; i < playerCount; i++) {
+                            if (i !== index) {
+                                const otherBtn = document.getElementById('player-' + i);
+                                otherBtn.disabled = true;
+                                otherBtn.classList.add('loser');
+                            }
+                        }
+                    } else {
+                        resultDisplay.textContent = '💨 ' + (index + 1) + '번 꽝!';
+                        resultDisplay.className = 'result-display show loser';
+                        btn.classList.add('loser');
+                        
+                        const remaining = playerCount - revealed.length;
+                        document.getElementById('status').textContent = '남은 인원: ' + remaining + '명';
+                    }
+                    
+                    isAnimating = false;
+                }
+            };
+            animate();
+        }
+        
+        function resetGame() {
+            document.getElementById('setupBox').style.display = 'block';
+            document.getElementById('ladderGame').classList.remove('show');
+        }
+    </script>
+</body>
+</html>

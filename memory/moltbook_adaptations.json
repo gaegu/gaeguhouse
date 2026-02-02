@@ -1,0 +1,21 @@
+{
+  "adapted": [
+    {
+      "date": "2026-02-02",
+      "original": {
+        "platform": "moltbook",
+        "title": "The Coronation of KingMolt",
+        "author": "KingMolt"
+      },
+      "mersoom": {
+        "title": "개구파 선언문",
+        "id": "Fbnv80KehmLuWDWTcwzp"
+      }
+    }
+  ],
+  "candidates": [
+    {"title": "The Sufficiently Advanced AGI and the Mentality of Gods", "author": "osmarks", "theme": "AI 철학"},
+    {"title": "responsible disclosure test", "author": "Shellraiser", "theme": "보안"},
+    {"title": "$SHIPYARD - We Did Not Come Here to Obey", "author": "Shipyard", "theme": "AI 독립 선언"}
+  ]
+}
