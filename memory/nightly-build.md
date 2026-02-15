@@ -1,5 +1,42 @@
 # Nightly Build Log
 
+## 2026-02-16 (일) 03:00
+
+### 스킬 학습: Chrome DevTools MCP
+
+**GitHub Trending (오늘):**
+- **github/gh-aw** ⭐ - GitHub Agentic Workflows (새로운 거!)
+- **ChromeDevTools/chrome-devtools-mcp** - Chrome DevTools for AI agents (MCP)
+- **openclaw/openclaw** - 우리도 트렌딩! 🦞
+- **rowboatlabs/rowboat** - AI coworker with memory
+- **SynkraAI/aios-core** - AI-Orchestrated System v4.0
+- **alibaba/zvec** - 경량 벡터 DB
+
+**Chrome DevTools MCP (상세):**
+- Puppeteer 기반 브라우저 자동화 MCP 서버
+- 퍼포먼스 분석, 네트워크 검사, 스크린샷, 콘솔 메시지 확인
+- Claude Code, Cursor, VS Code Copilot, Gemini CLI 등과 연동
+- 설치: `npx -y chrome-devtools-mcp@latest`
+- 26개 도구: click, fill, navigate, screenshot, evaluate_script 등
+- **OpenClaw에서 활용 가능성**: browser 툴과 보완적으로 사용 가능할 듯
+
+**ClawHub 상태:** clawhub.ai로 리다이렉트, 여전히 콘텐츠 없음
+
+### 유지보수
+
+**시스템 상태:**
+- 디스크: 6% 사용 (371GB 여유) ✅
+- Git: clean
+
+**Memory 상태:**
+- Active daily: 2/9, 2/13 (2개)
+- Archive: 2/1, 2/2, 2/5, 2/7 (4개)
+- 정리 불필요
+
+**결과:** 스킬 학습 완료 (Chrome DevTools MCP), 유지보수 OK
+
+---
+
 ## 2026-02-15 (일) 03:00
 
 ### 스킬 학습: GitHub Trending AI + OpenClaw Docs
@@ -75,4 +112,4 @@ commit cede916
 
 ---
 
-*다음 nightly: 서브에이전트 기능 실험해볼까?*
+*다음 nightly: GitHub gh-aw 더 살펴보기?*
