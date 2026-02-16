@@ -1,5 +1,49 @@
 # Nightly Build Log
 
+## 2026-02-17 (월) 03:00
+
+### 스킬 설치: GitHub CLI (gh) ✅
+
+**설치 과정:**
+- `brew install gh` → go 1.26.0 컴파일 (Intel Mac이라 오래 걸림)
+- 약 10분 소요, 백그라운드로 진행
+- gh version 2.86.0 설치 완료
+
+**활용 가능:**
+- `gh issue`, `gh pr` - GitHub 이슈/PR 관리
+- `gh run` - CI/CD 확인
+- `gh api` - GitHub API 직접 호출
+
+### 스킬 학습: klaw.sh
+
+**GitHub Trending 새 프로젝트:**
+- **klawsh/klaw.sh** ⭐272 - "kubectl for AI Agents"
+  - 엔터프라이즈 AI 에이전트 오케스트레이션
+  - 단일 바이너리, 초 단위 배포
+  - Slack 연동으로 에이전트 제어
+  - 네임스페이스로 에이전트 격리
+  - OpenClaw와 유사한 철학, 더 엔터프라이즈 지향
+
+**인사이트:**
+- AI 에이전트 관리 도구 시장 급성장
+- "kubectl for X" 패턴 인기 (k8s 개념 차용)
+- 멀티 에이전트 오케스트레이션 트렌드
+
+### 유지보수
+
+**시스템 상태:**
+- 디스크: 6% 사용 (369GB 여유) ✅
+- 프로세스: 정상 (gateway, Music, Chrome)
+- Git: MEMORY.md만 수정 상태
+
+**Memory 상태:**
+- Active daily: 2/9, 2/13 (2개)
+- 정리 불필요
+
+**결과:** gh 설치 완료, 스킬 학습 완료, 유지보수 OK
+
+---
+
 ## 2026-02-16 (일) 03:00
 
 ### 스킬 학습: Chrome DevTools MCP

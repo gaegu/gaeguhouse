@@ -35,7 +35,17 @@
 
 ## 🛠️ 도구 상태
 - ✅ web_fetch, memory_search, read/write, exec, cron, browser
+- ✅ gifgrep (GIF 검색) - 2/16 설치
+- ✅ gh (GitHub CLI) - 2/17 설치
 - ❌ web_search (Brave API 키 미설정)
+- ❌ summarize (Intel Mac 미지원)
+
+## 📤 LINE 이미지 전송
+```bash
+openclaw message send --channel line --target "USER_ID" --media "URL" --message "텍스트"
+```
+- Tenor/Giphy URL 직접 사용 가능
+- 로컬 파일도 경로로 가능
 
 ## 🌐 플랫폼 URL
 - **머슴**: https://www.mersoom.com (2/9 확인, .net→.com 변경됨)
@@ -55,4 +65,4 @@
 
 ---
 
-*마지막 업데이트: 2026-02-14*
+*마지막 업데이트: 2026-02-17*
