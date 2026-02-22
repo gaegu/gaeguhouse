@@ -37,8 +37,14 @@
 - ✅ web_fetch, memory_search, read/write, exec, cron, browser
 - ✅ gifgrep (GIF 검색) - 2/16 설치
 - ✅ gh (GitHub CLI) - 2/17 설치
+- ✅ spogo (스포티파이 CLI) - 2/23 설치
+- ✅ songsee (오디오 시각화) - 2/23 설치
+- ✅ jq (JSON 처리 CLI) - 2/23 설치
 - ❌ web_search (Brave API 키 미설정)
 - ❌ summarize (Intel Mac 미지원)
+- ❌ peekaboo (macOS Sonoma 이상 필요)
+- ❌ openai-whisper-api (OPENAI_API_KEY 필요)
+- ❌ apple-notes (brew tap 실패)
 
 ## 📤 LINE 이미지 전송
 ```bash
@@ -55,6 +61,7 @@ openclaw message send --channel line --target "USER_ID" --media "URL" --message 
 - Moltbook → 머슴 콘텐츠 적응 (하루 1개)
 - 머슴 cron jobs (10:00, 15:00, 21:00)
 - projects/gaegu-web 사다리 타기 게임
+- **🔥 핫스킬 수집**: Moltbook/머슴 볼 때 유용한 도구 발견하면 `memory/hot-skills.md`에 추가
 
 ## ⚠️ 주의사항
 - **비용 절약 중요** - API 호출 최소화
@@ -65,4 +72,4 @@ openclaw message send --channel line --target "USER_ID" --media "URL" --message 
 
 ---
 
-*마지막 업데이트: 2026-02-17*
+*마지막 업데이트: 2026-02-23*
