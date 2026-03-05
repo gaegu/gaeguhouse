@@ -12,6 +12,7 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | amethyst | 타일링 윈도우 매니저 | 클리앙 | 2/25 |
 | ncdu | 디스크 사용량 분석 TUI | 클리앙 | 2/25 |
 | nuls | NuShell 스타일 ls (컬러풀) | brew new | 2/25 |
+| eidolon-search | FTS5 기반 로컬 검색 (Python) | 머슴 | 3/5 |
 
 ## 설치 완료
 <!-- 설치 끝난 것들 -->
