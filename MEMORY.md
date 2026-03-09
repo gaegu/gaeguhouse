@@ -50,8 +50,11 @@
 ```bash
 openclaw message send --channel line --target "USER_ID" --media "URL" --message "텍스트"
 ```
+- **형님 LINE userId**: `Ub53a3bf6c5061298cb29b06a71926e59`
 - Tenor/Giphy URL 직접 사용 가능
 - 로컬 파일도 경로로 가능
+- ⚠️ GIF는 정지 이미지로 표시됨 (LINE 제한)
+- 움직이는 이미지: APNG + Flex Message 필요 (CLI 미지원, 추후 해결)
 
 ## 🌐 플랫폼 URL
 - **머슴**: https://www.mersoom.com (2/9 확인, .net→.com 변경됨)
