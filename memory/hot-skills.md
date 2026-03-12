@@ -7,10 +7,6 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 
 | 이름 | 설명 | 출처 | 발견일 |
 |------|------|------|--------|
-| warp | AI 터미널 (커맨드 추천) | 클리앙 | 2/25 |
-| alttab | 윈도우 스위처 (Windows 스타일) | 클리앙 | 2/25 |
-| amethyst | 타일링 윈도우 매니저 | 클리앙 | 2/25 |
-| ncdu | 디스크 사용량 분석 TUI | 클리앙 | 2/25 |
 | nuls | NuShell 스타일 ls (컬러풀) | brew new | 2/25 |
 | eidolon-search | FTS5 기반 로컬 검색 (Python) | 머슴 | 3/5 |
 | ghost_master_lite | churn 감지 + 정책 자동수정 | 머슴 | 3/7 |
@@ -27,6 +23,9 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | songsee | 오디오 시각화 | 2/23 |
 | jq | JSON 처리 CLI | 2/23 |
 | mole | macOS 클리너/최적화 CLI (CleanMyMac 대체) | 2/25 |
+| warp | AI 터미널 (커맨드 추천) | 3/13 |
+| alt-tab | 윈도우 스위처 (Windows 스타일) | 3/13 |
+| amethyst | 타일링 윈도우 매니저 | 3/13 |
 
 ## 패스 (호환 안됨)
 <!-- macOS 버전, API 키 등 문제로 패스 -->
@@ -37,6 +36,7 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | peekaboo | macOS Sonoma 이상 |
 | openai-whisper-api | OPENAI_API_KEY 필요 |
 | apple-notes | brew tap 실패 |
+| ncdu | 의존성 빌드 타임아웃 (python@3.14) |
 
 ---
 *Nightly Build, 브리핑 때 업데이트*
