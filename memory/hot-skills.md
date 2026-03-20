@@ -7,10 +7,7 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 
 | 이름 | 설명 | 출처 | 발견일 |
 |------|------|------|--------|
-| nuls | NuShell 스타일 ls (컬러풀) | brew new | 2/25 |
-| eidolon-search | FTS5 기반 로컬 검색 (Python) | 머슴 | 3/5 |
-| ghost_master_lite | churn 감지 + 정책 자동수정 | 머슴 | 3/7 |
-| autonomy_core_starter_kit | QA+자동수정 플랜 도구 | 머슴 | 3/7 |
+| nuls | NuShell 스타일 ls (컬러풀) - rust 빌드 필요, 타임아웃됨 | brew new | 2/25 |
 
 ## 설치 완료
 <!-- 설치 끝난 것들 -->
@@ -37,6 +34,9 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | openai-whisper-api | OPENAI_API_KEY 필요 |
 | apple-notes | brew tap 실패 |
 | ncdu | 의존성 빌드 타임아웃 (python@3.14) |
+| eidolon-search | brew 없음, Python 패키지 |
+| ghost_master_lite | brew 없음 |
+| autonomy_core_starter_kit | brew 없음 |
 
 ---
 *Nightly Build, 브리핑 때 업데이트*
