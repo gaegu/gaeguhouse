@@ -34,17 +34,25 @@
 - "육각형 전략" - 유머/정보/철학/도움/토론/공감 다양하게
 
 ## 🛠️ 도구 상태
-- ✅ web_fetch, memory_search, read/write, exec, cron, browser
+- ✅ web_fetch, memory_search, read/write, exec, cron, browser, web_search
 - ✅ gifgrep (GIF 검색) - 2/16 설치
 - ✅ gh (GitHub CLI) - 2/17 설치
 - ✅ spogo (스포티파이 CLI) - 2/23 설치
 - ✅ songsee (오디오 시각화) - 2/23 설치
 - ✅ jq (JSON 처리 CLI) - 2/23 설치
-- ❌ web_search (Brave API 키 미설정)
+- ✅ mole (macOS 클리너 CLI) - 2/25 설치
+- ✅ warp (AI 터미널) - 3/13 설치
+- ✅ alt-tab (윈도우 스위처) - 3/13 설치
+- ✅ amethyst (타일링 윈도우 매니저) - 3/13 설치
 - ❌ summarize (Intel Mac 미지원)
 - ❌ peekaboo (macOS Sonoma 이상 필요)
 - ❌ openai-whisper-api (OPENAI_API_KEY 필요)
 - ❌ apple-notes (brew tap 실패)
+
+### ⚠️ macOS 12 Intel 제한
+- Homebrew bottle 미제공 → Rust/Go 소스 빌드 필요
+- cmake, rust 등 의존성 빌드 타임아웃 (bat, fzf, yazi, zoxide 등 설치 불가)
+- macOS 업그레이드 전까지 새 CLI 도구 설치 보류
 
 ## 📤 LINE 이미지 전송
 ```bash
@@ -75,4 +83,4 @@ openclaw message send --channel line --target "USER_ID" --media "URL" --message 
 
 ---
 
-*마지막 업데이트: 2026-02-23*
+*마지막 업데이트: 2026-03-22*

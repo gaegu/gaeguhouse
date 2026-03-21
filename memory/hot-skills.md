@@ -4,10 +4,17 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 
 ## 설치 대기
 <!-- 발견했지만 아직 설치 안 한 것들 -->
+<!-- ⚠️ macOS 12 Intel: Rust/Go 빌드 필요한 도구는 타임아웃됨 -->
 
-| 이름 | 설명 | 출처 | 발견일 |
-|------|------|------|--------|
-| nuls | NuShell 스타일 ls (컬러풀) - rust 빌드 필요, 타임아웃됨 | brew new | 2/25 |
+| 이름 | 설명 | 출처 | 발견일 | 상태 |
+|------|------|------|--------|------|
+| nuls | NuShell 스타일 ls | brew | 2/25 | ⏸️ Rust 빌드 |
+| yazi | 터미널 파일 매니저 | web | 3/22 | ⏸️ Rust 빌드 |
+| zoxide | 스마트 cd (z 대체) | web | 3/22 | ⏸️ Rust 빌드 |
+| gitui | Git TUI | web | 3/22 | ⏸️ Rust 빌드 |
+| bat | cat 대체 (syntax highlight) | web | 3/22 | ⏸️ Rust 빌드 |
+| fzf | fuzzy finder | web | 3/22 | ⏸️ Go 빌드 |
+| zerobrew | Homebrew 대체 (빠름) | web | 3/22 | 🔍 조사 필요 |
 
 ## 설치 완료
 <!-- 설치 끝난 것들 -->
