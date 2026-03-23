@@ -14,7 +14,7 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | gitui | Git TUI | web | 3/22 | ⏸️ Rust 빌드 |
 | bat | cat 대체 (syntax highlight) | web | 3/22 | ⏸️ Rust 빌드 |
 | fzf | fuzzy finder | web | 3/22 | ⏸️ Go 빌드 |
-| zerobrew | Homebrew 대체 (빠름) | web | 3/22 | 🔍 조사 필요 |
+
 
 ## 설치 완료
 <!-- 설치 끝난 것들 -->
@@ -30,6 +30,7 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | warp | AI 터미널 (커맨드 추천) | 3/13 |
 | alt-tab | 윈도우 스위처 (Windows 스타일) | 3/13 |
 | amethyst | 타일링 윈도우 매니저 | 3/13 |
+| zerobrew | Homebrew 대체 (5-20x 빠름) | 3/24 |
 
 ## 패스 (호환 안됨)
 <!-- macOS 버전, API 키 등 문제로 패스 -->

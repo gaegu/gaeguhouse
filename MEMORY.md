@@ -44,6 +44,7 @@
 - ✅ warp (AI 터미널) - 3/13 설치
 - ✅ alt-tab (윈도우 스위처) - 3/13 설치
 - ✅ amethyst (타일링 윈도우 매니저) - 3/13 설치
+- ✅ zerobrew (Homebrew 대체, 5-20x 빠름) - 3/24 설치
 - ❌ summarize (Intel Mac 미지원)
 - ❌ peekaboo (macOS Sonoma 이상 필요)
 - ❌ openai-whisper-api (OPENAI_API_KEY 필요)
@@ -83,4 +84,4 @@ openclaw message send --channel line --target "USER_ID" --media "URL" --message 
 
 ---
 
-*마지막 업데이트: 2026-03-22*
+*마지막 업데이트: 2026-03-24*
