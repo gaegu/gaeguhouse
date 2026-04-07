@@ -1,5 +1,37 @@
 # Nightly Build Log
 
+## 2026-04-08 (화) 04:16
+
+### 핫스킬 수집
+
+**Moltbook:** /hot 페이지 404 (경로 변경된 듯)
+
+**웹 검색으로 발견한 도구들:**
+- **Atuin** - SQLite 기반 shell history, 여러 쉘 지원
+- **Starship** - 미니멀 크로스쉘 prompt
+- **eza** - ls 대체 (exa 후속작, 유지보수 활발)
+- **mas** - Mac App Store CLI
+
+**문제:** 모두 Rust/Swift 빌드 필요 → Intel Mac 타임아웃 예상 ⏸️
+
+### zerobrew 상태 수정
+
+3/24에 설치 완료로 기록했으나 실제 바이너리 없음 발견
+- `which zerobrew` → not found
+- `/usr/local/bin/zerobrew` → 없음
+- hot-skills.md, MEMORY.md에서 패스로 수정
+
+### 유지보수
+
+**변경 파일:**
+- `memory/hot-skills.md` - 4개 도구 추가, zerobrew 수정
+- `memory/2026-04-08.md` - 오늘 daily 생성
+- `MEMORY.md` - zerobrew 상태 수정
+
+**결과:** 새 도구 4개 발견 (빌드 필요), zerobrew 오류 수정 ✅
+
+---
+
 ## 2026-02-17 (월) 03:00
 
 ### 스킬 설치: GitHub CLI (gh) ✅

@@ -4,7 +4,7 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 
 ## 설치 대기
 <!-- 발견했지만 아직 설치 안 한 것들 -->
-<!-- ⚠️ macOS 12 Intel: Rust/Go 빌드 필요한 도구는 타임아웃됨 -->
+<!-- ⚠️ macOS 12 Intel: Rust/Go/Swift 빌드 필요한 도구는 타임아웃됨 -->
 
 | 이름 | 설명 | 출처 | 발견일 | 상태 |
 |------|------|------|--------|------|
@@ -14,6 +14,10 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | gitui | Git TUI | web | 3/22 | ⏸️ Rust 빌드 |
 | bat | cat 대체 (syntax highlight) | web | 3/22 | ⏸️ Rust 빌드 |
 | fzf | fuzzy finder | web | 3/22 | ⏸️ Go 빌드 |
+| atuin | shell history (SQLite 기반) | web | 4/8 | ⏸️ Rust 빌드 |
+| starship | 빠른 shell prompt | web | 4/8 | ⏸️ Rust 빌드 |
+| eza | ls 대체 (exa 후속) | web | 4/8 | ⏸️ Rust 빌드 |
+| mas | Mac App Store CLI | web | 4/8 | ⏸️ Swift 빌드 |
 
 
 ## 설치 완료
@@ -30,7 +34,7 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | warp | AI 터미널 (커맨드 추천) | 3/13 |
 | alt-tab | 윈도우 스위처 (Windows 스타일) | 3/13 |
 | amethyst | 타일링 윈도우 매니저 | 3/13 |
-| zerobrew | Homebrew 대체 (5-20x 빠름) | 3/24 |
+
 
 ## 패스 (호환 안됨)
 <!-- macOS 버전, API 키 등 문제로 패스 -->
@@ -45,6 +49,7 @@ Moltbook, 머슴, ClawHub 등에서 발견한 유용해 보이는 스킬/도구�
 | eidolon-search | brew 없음, Python 패키지 |
 | ghost_master_lite | brew 없음 |
 | autonomy_core_starter_kit | brew 없음 |
+| zerobrew | 설치 확인 불가 (3/24에 완료 기록했으나 바이너리 없음) |
 
 ---
 *Nightly Build, 브리핑 때 업데이트*
